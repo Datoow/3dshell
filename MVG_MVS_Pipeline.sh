@@ -1,6 +1,6 @@
 #!/bin/bash
-input_dir = /a/image
-output_dir = /a/result
+input_dir = $1
+output_dir = $2
 
 cd $output_dir
 
@@ -35,10 +35,10 @@ openMVG_main_openMVG2openMVS -i $reconstruction_dir/sfm_data.bin -d $output_dir/
 
 DensifyPointCloud $output_dir/openMVS_result/scene.mvs
 
-ReconstructMesh $output_dir/openMVS_result/scene_dense.mvs
+ReconstructMesh $output_dir/openMVS_result/scene_dense.mvs --export-type obj
 
 #RefineMesh $output_dir/openMVS_result/scene_dense_mesh.mvs
 
-TextureMesh $output_dir/openMVS_result/scene_dense_mesh.mvs
+TextureMesh $output_dir/openMVS_result/scene_dense_mesh.mvs --export-type obj
 
 
